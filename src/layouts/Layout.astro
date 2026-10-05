@@ -1,0 +1,43 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/sora';
+import '../styles/global.css';
+interface Props { title?: string; description?: string; breadcrumb?: string; }
+const {
+  title = 'Affordable Concierge Healthcare and Virtual Doctors | Concierge Health Experts',
+  description = 'Access virtual medical care, healthcare navigation, and patient advocacy through Concierge Health Experts. Explore options for employers, associations, individuals, and families.',
+  breadcrumb,
+} = Astro.props;
+const siteUrl = Astro.site ?? new URL('https://conciergehealthexperts.com');
+const canonical = new URL(Astro.url.pathname, siteUrl).href;
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'Organization', '@id': `${siteUrl}#organization`, name: 'Concierge Health Experts', url: siteUrl.href, logo: new URL('/brand/che-logo.png', siteUrl).href },
+    { '@type': 'WebSite', '@id': `${siteUrl}#website`, name: 'Concierge Health Experts', url: siteUrl.href, publisher: { '@id': `${siteUrl}#organization` } },
+    ...(breadcrumb ? [{ '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl.href },
+      { '@type': 'ListItem', position: 2, name: breadcrumb, item: canonical },
+    ] }] : []),
+  ],
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#021652" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/png" href="/brand/favicon.png" />
+    <link rel="canonical" href={canonical} />
+    <title>{title}</title>
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData).replace(/</g, '\\u003c')} />
+  </head>
+  <body><a class="skip-link" href="#main">Skip to content</a><slot /></body>
+</html>

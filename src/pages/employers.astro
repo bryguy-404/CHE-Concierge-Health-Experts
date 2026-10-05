@@ -1,0 +1,64 @@
+---
+import AudienceLayout from '../layouts/AudienceLayout.astro';
+import AudienceHero from '../components/AudienceHero.astro';
+import AudienceFaqs from '../components/AudienceFaqs.astro';
+import CheckList from '../components/CheckList.astro';
+import RelatedAudiences from '../components/RelatedAudiences.astro';
+import Icon from '../components/Icon.astro';
+import { providerLinks } from '../data/site';
+
+const benefits = [
+  { title: 'Delayed access to care', text: 'Employees can seek help sooner instead of postponing care because of appointment delays, transportation, or uncertainty about where to go.' },
+  { title: 'Time away from work', text: 'Virtual access can reduce time spent traveling to appointments, sitting in waiting rooms, and calling multiple providers or insurance companies.' },
+  { title: 'Fragmented benefits', text: 'One recognizable resource helps employees understand where to begin and makes existing healthcare benefits easier to navigate.' },
+  { title: 'Avoidable healthcare spending', text: 'Earlier guidance can help members select an appropriate level of care, avoid unnecessary high-cost settings, and make more informed decisions when outside services are needed.' },
+];
+const services = [
+  'Virtual primary and urgent care for many everyday medical needs',
+  'Mental and behavioral-health support, subject to program availability',
+  'Prescription support when clinically appropriate',
+  'Chronic-condition, weight, wellness, and preventive-health guidance',
+  'Healthcare navigation and help finding outside care',
+  'Patient advocacy, insurance support, and medical-billing assistance',
+  'Support for eligible family members, based on the selected program',
+];
+const fit = [
+  'Employers seeking a more responsive virtual primary-care solution',
+  'Self-funded employers focused on healthcare cost management',
+  'Organizations with rural, distributed, mobile, or shift-based teams',
+  'Companies whose employees struggle to find timely primary care',
+  'Employers managing several disconnected healthcare point solutions',
+];
+const faqs = [
+  { question: 'Does this replace health insurance?', answer: 'Core Amaze services complement health insurance; they are not comprehensive major medical insurance. Qualifying employers may separately explore the Lean Health Plan with Amaze’s team.' },
+  { question: 'How much does the employer program cost?', answer: 'Pricing depends on the population, services, eligibility structure, and agreement. Amaze will confirm the final price and terms during your consultation.' },
+  { question: 'Can family members participate?', answer: 'Family eligibility depends on the employer agreement and selected program. Eligible populations will be confirmed during the consultation.' },
+  { question: 'How quickly can we launch?', answer: 'Timing depends on contracting, eligibility setup, communication planning, and implementation requirements. Amaze will establish a realistic launch plan after reviewing the organization’s needs.' },
+];
+---
+<AudienceLayout audience="Employers" title="Virtual Primary Care and Concierge Healthcare for Employers" description="Give employees virtual doctor access, primary care, mental-health support, patient advocacy, and healthcare navigation through one easy-to-use benefit.">
+  <AudienceHero eyebrow="For your workforce" title="Give employees one place to start for healthcare." description="Connect your workforce with immediate virtual medical care, personal healthcare navigation, and ongoing support—while helping reduce the time, confusion, and avoidable expense surrounding healthcare." primaryHref={providerLinks.employers} primaryLabel="Request an employer consultation" secondaryHref="#services" secondaryLabel="Explore the benefit">
+    <div class="audience-feature-panel employer-panel">
+      <div class="panel-heading"><span class="panel-icon"><Icon name="building" size={32} /></span><p class="eyebrow">A more connected benefit</p></div>
+      <h2>One familiar<br />place to turn.</h2>
+      <p>For your employees.<br />For the people who count on them.</p>
+      <ul class="panel-services"><li><Icon name="care" />Virtual medical care</li><li><Icon name="guide" />Healthcare navigation</li><li><Icon name="shield" />Patient advocacy</li></ul>
+      <div class="panel-footnote">Healthcare services through Amaze Health</div>
+    </div>
+  </AudienceHero>
+
+  <section class="audience-introduction container" aria-labelledby="benefit-title"><p class="eyebrow">A clear answer to “Where do I start?”</p><div class="intro-columns"><h2 id="benefit-title">A healthcare benefit employees can actually use.</h2><div><p>Employees are often given multiple healthcare vendors, phone numbers, portals, and apps. When someone becomes sick, needs a prescription, receives a confusing bill, or cannot find a doctor, the most basic question remains unanswered: Where do I start?</p><p>Concierge Health Experts connects employers with Amaze Health, giving employees and eligible family members one familiar front door for virtual primary care, urgent-care needs, mental-health support, chronic-condition guidance, navigation, and advocacy.</p></div></div></section>
+
+  <section class="audience-benefits section" aria-labelledby="problems-title"><div class="container"><div class="audience-section-heading"><p class="eyebrow">Better access. Less friction.</p><h2 id="problems-title">What problems does virtual concierge healthcare solve for employers?</h2></div><div class="benefit-grid">{benefits.map((benefit, i) => <article><span class="benefit-number">0{i + 1}</span><h3>{benefit.title}</h3><p>{benefit.text}</p></article>)}</div></div></section>
+
+  <section class="section container services-layout" id="services" aria-labelledby="services-title"><div><p class="eyebrow">Everyday care and ongoing support</p><h2 id="services-title">Services that support your workforce.</h2><p>One coordinated healthcare resource for medical needs and the questions that come next.</p><p class="service-qualification">Services and family eligibility depend on the selected program and employer agreement.</p></div><CheckList items={services} /></section>
+
+  <section class="container" aria-labelledby="lean-plan-title"><div class="feature-callout"><div><p class="eyebrow">For qualifying organizations</p><h2 id="lean-plan-title">Could your organization benefit from the Lean Health Plan?</h2></div><div><p>Larger employers may need more than a virtual-care benefit. For qualifying organizations, Amaze Health may evaluate whether its Lean Health Plan approach can support a broader, self-funded healthcare strategy.</p><p>The model can help an employer examine plan structure, direct-care options, pharmacy and procedure pricing, stop-loss protection, and opportunities to reduce unnecessary claims. Amaze will determine whether a prospect is better suited for core services or a broader plan conversation.</p><a class="button button-light" href={providerLinks.employers}>Discuss your organization</a></div></div></section>
+
+  <section class="section container fit-layout" aria-labelledby="fit-title"><div><p class="eyebrow">Built around your people</p><h2 id="fit-title">Who is a good fit?</h2><p>A practical starting point for organizations working to make healthcare easier to reach.</p></div><CheckList items={fit} /></section>
+
+  <AudienceFaqs description="Understand the benefit, eligibility, and what comes next for your organization." items={faqs} />
+
+  <section class="closing-section audience-closing" id="consultation" aria-labelledby="consultation-title"><div class="container closing-inner"><p class="eyebrow">Let’s talk about your workforce</p><h2 id="consultation-title">Help your employees start with the right care.</h2><p>Tell Amaze’s team a little about your organization. They’ll evaluate whether core virtual healthcare services or a broader Lean Health Plan conversation is the right next step.</p><p class="inquiry-context">Have your contact details, company name, state, and number of employees ready.</p><div class="closing-actions"><a class="button" href={providerLinks.employers}>Request an employer consultation</a></div><p class="destination-note">Continue to Amaze Health to discuss your organization.</p></div></section>
+  <RelatedAudiences current="employers" />
+</AudienceLayout>

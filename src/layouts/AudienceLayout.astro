@@ -1,0 +1,20 @@
+---
+import Layout from './Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/audience.css';
+import { contentUpdated, contentUpdatedLabel } from '../data/site';
+interface Props { title: string; description: string; audience: string; }
+const { title, description, audience } = Astro.props;
+---
+<Layout title={title} description={description} breadcrumb={audience}>
+  <Header />
+  <main id="main" class="audience-page">
+    <div class="container page-context">
+      <nav aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page">{audience}</li></ol></nav>
+      <p>Updated <time datetime={contentUpdated}>{contentUpdatedLabel}</time></p>
+    </div>
+    <slot />
+  </main>
+  <Footer />
+</Layout>

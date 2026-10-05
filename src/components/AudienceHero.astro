@@ -1,0 +1,13 @@
+---
+interface Props { eyebrow: string; title: string; description: string; primaryHref: string; primaryLabel: string; secondaryHref?: string; secondaryLabel?: string; }
+const { eyebrow, title, description, primaryHref, primaryLabel, secondaryHref, secondaryLabel } = Astro.props;
+---
+<section class="container audience-hero" aria-labelledby="audience-title">
+  <div class="audience-hero-copy">
+    <p class="eyebrow"><span class="eyebrow-rule"></span>{eyebrow}</p>
+    <h1 id="audience-title">{title}</h1>
+    <p class="audience-lead">{description}</p>
+    <div class="audience-actions"><a class="button" href={primaryHref}>{primaryLabel}</a>{secondaryHref && <a class="quiet-link" href={secondaryHref}>{secondaryLabel}</a>}</div>
+  </div>
+  <div class="audience-hero-visual"><slot /></div>
+</section>

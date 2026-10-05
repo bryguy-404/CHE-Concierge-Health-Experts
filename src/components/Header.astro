@@ -1,0 +1,43 @@
+---
+import Icon from './Icon.astro';
+import { audiences } from '../data/site';
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const home = currentPath === '/';
+---
+<div class="announcement">Virtual care. Real medical providers. Personal support.</div>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Concierge Health Experts home"><img src="/brand/che-logo.png" width="270" height="90" alt="Concierge Health Experts" /></a>
+    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-navigation"><Icon name="menu" /></button>
+    <nav id="main-navigation" aria-label="Main navigation">
+      {audiences.map(audience => <a href={`/${audience.slug}`} aria-current={currentPath === `/${audience.slug}` ? 'page' : undefined}>{audience.label}</a>)}
+      <a class="button button-small" href={home ? '#find-your-path' : '/#find-your-path'}>Find your care path</a>
+    </nav>
+  </div>
+</header>
+<script>
+  const menuButton = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const navigation = document.querySelector<HTMLElement>('#main-navigation');
+  const closeMenu = () => {
+    menuButton?.setAttribute('aria-expanded', 'false');
+    menuButton?.setAttribute('aria-label', 'Open navigation');
+    navigation?.classList.remove('is-open');
+  };
+  menuButton?.addEventListener('click', () => {
+    const open = menuButton.getAttribute('aria-expanded') !== 'true';
+    menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    navigation?.classList.toggle('is-open', open);
+  });
+  navigation?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') {
+      closeMenu();
+      menuButton.focus();
+    }
+  });
+  document.addEventListener('click', event => {
+    if (event.target instanceof Node && !document.querySelector('.site-header')?.contains(event.target)) closeMenu();
+  });
+  window.matchMedia('(min-width: 761px)').addEventListener('change', closeMenu);
+</script>

@@ -1,0 +1,21 @@
+---
+import { audiences } from '../data/site';
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <a class="brand" href="/" aria-label="Concierge Health Experts home"><img src="/brand/che-logo-white.png" width="270" height="90" alt="Concierge Health Experts" /></a>
+      <p>Expert healthcare help.<br />One place to start.</p>
+      <nav aria-label="Footer navigation">
+        {audiences.map(audience => <a href={`/${audience.slug}`}>{audience.label}</a>)}
+        <a href="/#how-it-works">How it works</a>
+        <a href="/#questions">Common questions</a>
+      </nav>
+    </div>
+    <div class="footer-disclosure">
+      <p>Concierge Health Experts connects eligible individuals and organizations with healthcare services provided through Amaze Health and its applicable clinical arrangements. Service availability, eligibility, access methods, and clinical capabilities vary by program and location. The service is not comprehensive health insurance.</p>
+      <p>For a medical emergency, call 911 or seek immediate emergency care.</p>
+    </div>
+    <div class="footer-bottom"><span>© {new Date().getFullYear()} Concierge Health Experts.</span><span>Care. Navigation. Advocacy.</span></div>
+  </div>
+</footer>

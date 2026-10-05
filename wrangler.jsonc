@@ -1,0 +1,8 @@
+{
+  "name": "concierge-health-experts",
+  "compatibility_date": "2026-10-04",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}

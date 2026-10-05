@@ -1,0 +1,9 @@
+---
+import Icon from './Icon.astro';
+interface Props { description: string; items: { question: string; answer: string }[]; }
+const { description, items } = Astro.props;
+---
+<section class="section container audience-faqs" id="questions" aria-labelledby="audience-faq-heading">
+  <div class="faq-intro"><p class="eyebrow">A little clarity goes a long way</p><h2 id="audience-faq-heading">Good questions.<br />Clear answers.</h2><p>{description}</p></div>
+  <div class="faq-list">{items.map(item => <details><summary>{item.question}<span><Icon name="plus" size={20} /></span></summary><p>{item.answer}</p></details>)}</div>
+</section>

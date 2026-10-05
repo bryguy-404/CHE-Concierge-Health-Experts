@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="500" viewBox="0 0 1500 500">
+<g transform="translate(35 30) scale(.86)"><g fill="none" stroke-linecap="round" stroke-width="76">
+      <path d="M 184 126 A 170 170 0 0 1 328 126" stroke="#49B7C4"/>
+      <path d="M 120 315 A 170 170 0 0 1 120 197" stroke="#021652"/>
+      <path d="M 392 197 A 170 170 0 0 1 392 315" stroke="#214EA2"/>
+    </g><circle cx="256" cy="256" r="39" fill="#CC3366"/></g><g text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif">
+      <text x="570" y="250" font-size="150" font-weight="700" fill="#021652">Concierge</text>
+      <text x="578" y="362" font-size="84" font-weight="400" letter-spacing="1.5" fill="#214EA2">Health Experts</text>
+    </g></svg>

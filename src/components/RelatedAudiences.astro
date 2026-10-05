@@ -1,0 +1,6 @@
+---
+import { audiences } from '../data/site';
+interface Props { current: string; }
+const { current } = Astro.props;
+---
+<aside class="container related-audiences" aria-label="Other healthcare options"><p class="eyebrow">Looking for a different path?</p><div>{audiences.filter(audience => audience.slug !== current).map(audience => <a href={`/${audience.slug}`}><strong>{audience.label}</strong><span>{audience.description}</span></a>)}</div></aside>

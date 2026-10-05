@@ -1,0 +1,54 @@
+---
+import AudienceLayout from '../layouts/AudienceLayout.astro';
+import AudienceHero from '../components/AudienceHero.astro';
+import AudienceFaqs from '../components/AudienceFaqs.astro';
+import CheckList from '../components/CheckList.astro';
+import RelatedAudiences from '../components/RelatedAudiences.astro';
+import Icon from '../components/Icon.astro';
+import { providerLinks } from '../data/site';
+
+const services = [
+  'Virtual primary and urgent care',
+  'Mental-health support',
+  'Clinically appropriate prescriptions and medication guidance',
+  'Chronic-condition, wellness, weight, and preventive-health support',
+  'Help finding providers, tests, imaging, and outside care',
+  'Patient advocacy and care coordination',
+  'Medical-billing and insurance support',
+];
+const reasons = [
+  'I need to speak with a virtual doctor or medical provider.',
+  'I am not sure whether I need urgent care or an office visit.',
+  'I need help with a prescription or medication question.',
+  'I cannot find a primary-care doctor or specialist.',
+  'I need mental-health or chronic-condition support.',
+  'I received a confusing medical bill or insurance response.',
+  'I am uninsured or underinsured and need help evaluating my options.',
+  'I want one trusted resource for my family’s healthcare questions.',
+];
+const faqs = [
+  { question: 'How much does membership cost?', answer: 'Amaze confirms current individual and family pricing, covered family members, applicable fees, availability, and enrollment terms. Review the current details during enrollment before choosing your membership.' },
+  { question: 'Do I need health insurance to enroll?', answer: 'Program eligibility should be confirmed during enrollment. The service can be useful with or without insurance, but it does not replace major medical insurance or coverage for emergencies, hospitalization, and outside services.' },
+  { question: 'Do I need an appointment?', answer: 'Access methods and appointment requirements depend on the program. Review the exact response and scheduling terms for your offering during enrollment.' },
+  { question: 'Can the service help my whole family?', answer: 'A family membership may cover eligible family members under the program’s current definition. Confirm who qualifies before enrolling.' },
+  { question: 'How do I enroll?', answer: providerLinks.individualEnrollment ? 'Select Enroll now to continue to the secure Amaze enrollment experience. You will review current pricing and terms, enter payment information, and receive activation instructions directly through Amaze.' : 'Enrollment is completed through Amaze, where you review current pricing and terms, enter payment information, and receive activation instructions. Online enrollment is not available through this website yet.' },
+];
+---
+<AudienceLayout audience="Individuals & families" title="Affordable Concierge Medicine and Virtual Doctors for Families" description="Get affordable virtual doctor access, primary care, prescriptions, healthcare navigation, and patient advocacy for yourself or your family.">
+  <AudienceHero eyebrow="For you and your people" title="A healthcare expert in your corner—without elite concierge pricing." description="Get convenient virtual medical care and personal help navigating prescriptions, specialists, insurance questions, and medical bills through one affordable monthly membership." primaryHref={providerLinks.individualEnrollment ?? '#enrollment'} primaryLabel={providerLinks.individualEnrollment ? 'Enroll now' : 'Explore enrollment'} secondaryHref="#included" secondaryLabel="See what is included">
+    <div class="individual-hero-image"><img src="/images/virtual-care-hero.webp" srcset="/images/virtual-care-hero-small.webp 720w, /images/virtual-care-hero.webp 1440w" sizes="(max-width: 900px) 100vw, 45vw" width="1440" height="960" fetchpriority="high" alt="A woman using her laptop from the comfort of home" /><div class="individual-photo-caption"><Icon name="heart" size={26} /><p>Personal support.<br /><strong>For whatever comes next.</strong></p></div></div>
+  </AudienceHero>
+
+  <section class="audience-introduction container" aria-labelledby="access-title"><p class="eyebrow">Healthcare, on your side</p><div class="intro-columns"><h2 id="access-title">Healthcare should be easier to reach.</h2><div><p>A health concern rarely arrives at a convenient time. You may need help after work, while traveling, when your regular doctor is unavailable, or when you simply do not know what kind of care you need.</p><p>Through Concierge Health Experts, individuals and families can enroll in an Amaze Health service designed to provide immediate virtual access and ongoing support. Start with a medical question and get help moving toward the right resolution.</p></div></div></section>
+
+  <section class="reason-section section" aria-labelledby="reasons-title"><div class="container"><div class="audience-section-heading"><p class="eyebrow">Everyday questions. Personal guidance.</p><h2 id="reasons-title">Reasons members reach out.</h2><p>From a new health concern to a confusing medical bill, you have a place to begin.</p></div><ul class="reason-grid">{reasons.map(reason => <li><span><Icon name="guide" size={22} /></span><p>{reason}</p></li>)}</ul></div></section>
+
+  <section class="section container services-layout" id="included" aria-labelledby="included-title"><div><p class="eyebrow">Support beyond a single visit</p><h2 id="included-title">What is included?</h2><p>Depending on eligibility, location, clinical appropriateness, and the selected program, services may include:</p><p class="service-qualification">This service complements healthcare coverage. It does not replace comprehensive medical insurance.</p></div><CheckList items={services} /></section>
+
+  <section class="container" aria-labelledby="college-title"><div class="college-panel"><div><p class="eyebrow">A little support, away from home</p><h2 id="college-title">An option for college students and their parents.</h2></div><div><p>College students often need care when they are away from home, without transportation, or uncomfortable discussing a health concern through a parent. Virtual concierge healthcare can give eligible students a private, convenient place to ask questions and seek medical guidance without leaving campus.</p><p class="college-note">Privacy, consent, and account access depend on the student’s age, applicable law, and program terms.</p></div></div></section>
+
+  <AudienceFaqs description="Understand membership, family eligibility, and what happens when you enroll." items={faqs} />
+
+  <section class="closing-section audience-closing" id="enrollment" aria-labelledby="enrollment-title"><div class="container closing-inner"><p class="eyebrow">Get easier access to care</p><h2 id="enrollment-title">Ready for healthcare that is easier to reach?</h2><p>Get a trusted resource for the questions that come next. Amaze’s secure enrollment experience lets you review current membership details, complete payment, and activate your access.</p><ol class="enrollment-steps"><li><span>01</span>Review pricing &amp; eligibility</li><li><span>02</span>Choose your membership</li><li><span>03</span>Activate through Amaze</li></ol><div class="closing-actions">{providerLinks.individualEnrollment ? <a class="button" href={providerLinks.individualEnrollment}>Continue to secure enrollment</a> : <button type="button" class="button" disabled aria-describedby="enrollment-status">Continue to secure enrollment</button>}</div>{!providerLinks.individualEnrollment && <p class="destination-note" id="enrollment-status">Online enrollment is not available here yet.</p>}</div></section>
+  <RelatedAudiences current="individuals-and-families" />
+</AudienceLayout>
