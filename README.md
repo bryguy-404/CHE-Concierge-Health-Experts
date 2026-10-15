@@ -28,7 +28,7 @@ Scripts invoke Astro through Node because the project folder contains a colon, w
 - Each audience page includes the supplied audience-specific benefits, services, FAQs, and conversion copy. The employer page covers the Lean Health Plan; the association page explains group arrangements and individual opt-in; the individual page includes college-student support.
 - Employer and association calls to action use the exact provider destinations forwarded by Luke. Both returned HTTP 200 and displayed inquiry forms during browser verification on October 5, 2026. No form submissions were made.
 - Following the October 3 meeting's provider-handoff direction, inquiry forms are hosted by Amaze. The document's local form and thank-you-page copy is therefore not implemented as a separate local submission flow. No Resend integration is needed for this approach.
-- The individual/family page explains enrollment but keeps the final enrollment button disabled until the approved tracked URL is provided. Set `providerLinks.individualEnrollment` in `src/data/site.ts` to enable the hero, final button, and enrollment FAQ together.
+- The individual/family page's Enroll now and Continue to secure enrollment buttons use the exact Amaze reseller URL Suzu supplied and Luke forwarded on October 13. The `referencecode=ACLIDL5H` query parameter is preserved. The enrollment FAQ now describes the active handoff to Amaze. All provider destinations are maintained in `src/data/site.ts`.
 - Tentative prices are omitted as instructed in the source document. Current pricing and eligibility are confirmed through Amaze.
 - FAQs use native disclosure elements. The mobile menu supports Escape, focus restoration, outside-click dismissal, and closing after choosing a link.
 - Unique titles, descriptions, canonical URLs, visible audience-page updated dates, Organization/WebSite structured data, and internal-page breadcrumbs are implemented.
@@ -41,19 +41,18 @@ The supplied brand guide, website copy, and private email references are retaine
 
 ## Remaining before launch
 
-1. Supply Luke's approved tracked individual/family enrollment URL. Employer and association URLs are already connected.
-2. Confirm the publication details listed in the source document: pricing/eligibility, availability, clinical provider disclosures, service limitations, Lean Health Plan wording, claims, and inquiry follow-up ownership. The site remains a non-indexed preview pending these confirmations.
-3. Supply approved privacy/terms material and confirm the production domain, logo, and placeholder imagery. Add the production sitemap and indexing settings when launch details are final.
-4. Deploy to Cloudflare and verify the live domain and provider handoffs. Future educational articles from the document are a later content phase, not missing pages in the current four-page scope.
+1. Obtain Luke's final website approval and confirm the publication details listed in the source document: pricing/eligibility, availability, clinical provider disclosures, service limitations, Lean Health Plan wording, claims, and inquiry follow-up ownership. The site remains a non-indexed preview pending these confirmations.
+2. Supply approved privacy/terms material and confirm the production domain, logo, and placeholder imagery. Add the production sitemap and indexing settings when launch details are final.
+3. Connect the main domain to the existing Cloudflare Pages deployment and verify the live domain and provider handoffs. All three audience destinations are now connected. Future educational articles from the document are a later content phase, not missing pages in the current four-page scope.
 
 ## Cloudflare
 
-`wrangler.jsonc` describes a static Workers deployment of `dist/`. No Node.js server or framework adapter is required for this static website. The same `dist/` output can be used for Cloudflare Pages if desired. Deployment and domain connection have not been performed.
+`wrangler.jsonc` describes a static Workers deployment of `dist/`. No Node.js server or framework adapter is required for this static website. The same `dist/` output is deployed through Cloudflare Pages at https://che-concierge-health-experts.pages.dev/. The GitHub `main` branch supplies the site source; the main-domain launch remains pending.
 
 ## Verification for this milestone
 
 - Astro check: zero errors, warnings, or hints.
 - Production static build: passed.
 - Browser checks cover all four pages at 320, 390, 768, and 1440 pixels, image/font loading, metadata, structured data, links, and horizontal overflow.
-- Interaction checks cover homepage-to-audience navigation, breadcrumbs, FAQ mouse/keyboard toggles, mobile menus, Escape focus restoration, anchor targets, the pending individual-enrollment state, and the custom 404 response.
+- Interaction checks cover homepage-to-audience navigation, breadcrumbs, FAQ mouse/keyboard toggles, mobile menus, Escape focus restoration, anchor targets, and the custom 404 response. The October 15 enrollment update adds the active individual/family handoff with the supplied reseller reference code.
 - Browser screenshots and verification results are in ignored `qa/`. The production-build preview remains available on port 4321.
