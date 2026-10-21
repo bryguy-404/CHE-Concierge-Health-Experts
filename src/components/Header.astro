@@ -7,7 +7,7 @@ const home = currentPath === '/';
 <div class="announcement">Virtual care. Real medical providers. Personal support.</div>
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/" aria-label="Concierge Health Experts home"><img src="/brand/che-logo.png" width="270" height="90" alt="Concierge Health Experts" /></a>
+    <a class="brand" href="/" aria-label="Concierge Health Experts home"><img src="/brand/che-logo.png" width="1200" height="384" alt="Concierge Health Experts" /></a>
     <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-navigation"><Icon name="menu" /></button>
     <nav id="main-navigation" aria-label="Main navigation">
       {audiences.map(audience => <a href={`/${audience.slug}`} aria-current={currentPath === `/${audience.slug}` ? 'page' : undefined}>{audience.label}</a>)}

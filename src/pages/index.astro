@@ -28,37 +28,32 @@ const faqs = [
         <p class="hero-description">Virtual medical care. A guide through the complicated parts. Personal support for you, your family, and the people who count on you.</p>
         <a class="button" href="#find-your-path">Find your care path</a>
         <a class="quiet-link" href="#how-it-works">See how it works</a>
-        <div class="hero-note"><span class="note-mark"><Icon name="check" size={15} /></span><span>Care, navigation, and advocacy. One place to start.</span></div>
       </div>
       <div class="hero-visual">
-        <img class="hero-image" src="/images/virtual-care-hero.webp" srcset="/images/virtual-care-hero-small.webp 720w, /images/virtual-care-hero.webp 1440w" sizes="(max-width: 760px) 100vw, 48vw" width="1440" height="960" fetchpriority="high" alt="A woman comfortably using her laptop at home in natural daylight" />
-        <div class="image-caption"><span class="caption-icon"><Icon name="heart" size={28} /></span><div><span class="caption-eyebrow">A little less complicated.</span><p>A lot more personal.</p></div></div>
+        <img class="hero-image" src="/images/phone-consultation.webp" srcset="/images/phone-consultation-small.webp 640w, /images/phone-consultation.webp 1122w" sizes="(max-width: 760px) calc(100vw - 48px), (max-width: 1150px) 45vw, 608px" width="1122" height="1402" fetchpriority="high" alt="A woman at home speaking with a doctor visible on her smartphone screen" />
+        <div class="image-caption"><span class="caption-icon"><Icon name="care" size={28} /></span><p>24/7 healthcare access on your phone.</p></div>
         <span class="visual-accent" aria-hidden="true"></span>
       </div>
     </section>
-
-    <div class="care-strip">
-      <div class="container care-strip-inner"><span>Your health. A connected team.</span><div><Icon name="care" />Virtual medical care</div><div><Icon name="guide" />Healthcare navigation</div><div><Icon name="shield" />Patient advocacy</div></div>
-    </div>
 
     <section class="section container paths-section" id="find-your-path" aria-labelledby="paths-heading">
       <div class="section-heading"><div><p class="eyebrow">Care that meets you where you are</p><h2 id="paths-heading">A better place to start.<br />A path for everyone.</h2></div><p>For your workforce, your members, or your family. Find the healthcare support that fits your world.</p></div>
       <div class="path-grid">
         <article class="path-card" id="employers">
-          <span class="path-icon"><Icon name="building" size={30} /></span><span class="path-number" aria-hidden="true">01</span>
-          <p class="eyebrow">For your workforce</p><h3>Employers</h3><p>Give employees and eligible family members one place to start for medical care, healthcare navigation, and advocacy.</p>
+          <span class="path-icon"><Icon name="building" size={30} /></span>
+          <p class="eyebrow">For your workforce</p><h3><a href="/employers">Employers</a></h3><p>Give employees and eligible family members one place to start for medical care, healthcare navigation, and advocacy.</p>
           <ul><li><Icon name="check" size={17} />Easier access to care</li><li><Icon name="check" size={17} />Support for distributed teams</li><li><Icon name="check" size={17} />A more connected benefit</li></ul>
           <a class="path-link" href="/employers">Explore employer solutions</a>
         </article>
         <article class="path-card" id="associations">
-          <span class="path-icon"><Icon name="people" size={30} /></span><span class="path-number" aria-hidden="true">02</span>
-          <p class="eyebrow">For your community</p><h3>Associations</h3><p>Offer members a practical healthcare resource, especially those who work independently or have limited access to primary care.</p>
+          <span class="path-icon"><Icon name="people" size={30} /></span>
+          <p class="eyebrow">For your community</p><h3><a href="/associations">Associations</a></h3><p>Offer members a practical healthcare resource, especially those who work independently or have limited access to primary care.</p>
           <ul><li><Icon name="check" size={17} />Meaningful member value</li><li><Icon name="check" size={17} />Support wherever work takes them</li><li><Icon name="check" size={17} />Flexible program conversations</li></ul>
           <a class="path-link" href="/associations">Explore association partnerships</a>
         </article>
         <article class="path-card path-card-family" id="individuals">
-          <span class="path-icon"><Icon name="heart" size={30} /></span><span class="path-number" aria-hidden="true">03</span>
-          <p class="eyebrow">For you and your people</p><h3>Individuals &amp; families</h3><p>Convenient virtual healthcare and a trusted team in your corner when medical or administrative questions arise.</p>
+          <span class="path-icon"><Icon name="heart" size={30} /></span>
+          <p class="eyebrow">For you and your people</p><h3><a href="/individuals-and-families">Individuals &amp; families</a></h3><p>Convenient virtual healthcare and a trusted team in your corner when medical or administrative questions arise.</p>
           <ul><li><Icon name="check" size={17} />Help with everyday health needs</li><li><Icon name="check" size={17} />Guidance through the next step</li><li><Icon name="check" size={17} />Personal healthcare support</li></ul>
           <a class="path-link" href="/individuals-and-families">View individual &amp; family access</a>
         </article>
@@ -69,12 +64,12 @@ const faqs = [
     <section class="support-section" aria-labelledby="support-heading">
       <div class="container support-layout">
         <div class="support-intro"><p class="eyebrow">More than a virtual visit</p><h2 id="support-heading">Healthcare help.<br />Without the <br /><span>usual barriers.</span></h2><p>Healthcare shouldn’t begin with weeks of waiting or uncertainty about whom to call.</p><p>Concierge Health Experts connects people with an Amaze Health solution designed to make care easier to reach—and the system easier to navigate.</p><a class="text-link" href="#how-it-works">Get to know the experience</a></div>
-        <div class="service-grid">{services.map((service, i) => <article class="service"><div class="service-top"><Icon name={service.icon} size={31} /><span>0{i + 1}</span></div><h3>{service.title}</h3><p>{service.text}</p></article>)}</div>
+        <div class="service-grid">{services.map((service) => <article class="service"><div class="service-top"><Icon name={service.icon} size={31} /></div><h3>{service.title}</h3><p>{service.text}</p></article>)}</div>
       </div>
     </section>
 
     <section class="section container" id="how-it-works" aria-labelledby="how-heading">
-      <div class="how-panel"><div class="how-intro"><p class="eyebrow">One connection. Ongoing support.</p><h2 id="how-heading">A simpler way<br />to move forward.</h2><p>Start with a question. Get help understanding your options. Have someone in your corner for what comes next.</p><a class="button button-light" href="#find-your-path">Find your care path</a></div><ol class="steps"><li><span class="step-number">01</span><div><h3>Find your path</h3><p>Explore options for your organization, yourself, or your family.</p></div></li><li><span class="step-number">02</span><div><h3>Connect with care</h3><p>Eligible members can connect virtually with medical providers and patient advocates through Amaze Health.</p></div></li><li><span class="step-number">03</span><div><h3>Get support beyond the visit</h3><p>Receive guidance with referrals, prescriptions, billing questions, and the next step in your healthcare.</p></div></li></ol></div>
+      <div class="how-panel"><div class="how-intro"><p class="eyebrow">One connection. Ongoing support.</p><h2 id="how-heading">A simpler way<br />to move forward.</h2><p>Start with a question. Get help understanding your options. Have someone in your corner for what comes next.</p><a class="button button-light" href="#find-your-path">Find your care path</a></div><ol class="steps" role="list"><li><h3>Find your path</h3><p>Explore options for your organization, yourself, or your family.</p></li><li><h3>Connect with care</h3><p>Eligible members can connect virtually with medical providers and patient advocates through Amaze Health.</p></li><li><h3>Get support beyond the visit</h3><p>Receive guidance with referrals, prescriptions, billing questions, and the next step in your healthcare.</p></li></ol></div>
     </section>
 
     <section class="faq-section container" id="questions" aria-labelledby="faq-heading"><div class="faq-intro"><p class="eyebrow">A little clarity goes a long way</p><h2 id="faq-heading">Good questions.<br />Clear answers.</h2><p>Get to know what virtual concierge healthcare can—and can’t—do for you.</p></div><div class="faq-list">{faqs.map((faq) => <details><summary>{faq.question}<span><Icon name="plus" size={20} /></span></summary><p>{faq.answer}</p></details>)}</div></section>
